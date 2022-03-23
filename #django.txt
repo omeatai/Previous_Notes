@@ -23,7 +23,6 @@ $ django-admin startproject mypage
 
 CREATE PROJECT APPS
 $ python manage.py startapp challenges
-$ python3 manage.py startapp challenges
 
 RUN LOCAL SERVER
 $ python3 manage.py runserver
