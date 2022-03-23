@@ -10,9 +10,11 @@ numpy==1.9.2
 requests==2.7.0
 
 INSTALL DJANGO
-$ python3 -m pip install Django
 $ python -m pip install Django
 $ django-admin
+
+VIEW DJANGO VERSION
+$ python -m django --version
 
 CREATE DJANGO PROJECT
 $ django-admin startproject monthly_challenges
