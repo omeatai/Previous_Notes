@@ -1,3 +1,14 @@
+INSTALL VENV
+$ python3 -m venv venv
+$ source venv/bin/activate
+(venv) $ 
+
+CREATE REQUIREMENTS
+$ pip freeze > requirements.txt
+$ cat requirements.txt
+numpy==1.9.2
+requests==2.7.0
+
 INSTALL DJANGO
 $ python3 -m pip install Django
 $ python -m pip install Django
@@ -17,5 +28,15 @@ Quit the server with CONTROL-C.
 CREATE NEW APPS
 $ python manage.py startapp challenges
 $ python3 manage.py startapp challenges
+
+
+
+
+
+
+
+
+
+
 
 
