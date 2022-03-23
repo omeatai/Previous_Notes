@@ -1,0 +1,8 @@
+INSTALL DJANGO
+$ python3 -m pip install Django
+$ python -m pip install Django
+$ django-admin
+
+CREATE DJANGO PROJECT
+django-admin startproject mypage
+~/desktop/server/django django-admin startproject mypage
