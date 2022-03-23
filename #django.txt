@@ -15,7 +15,8 @@ $ python -m pip install Django
 $ django-admin
 
 CREATE DJANGO PROJECT
-django-admin startproject mypage
+$ django-admin startproject monthly_challenges
+$ django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
 RUN LOCAL SERVER
@@ -29,7 +30,8 @@ CREATE PROJECT APPS
 $ python manage.py startapp challenges
 $ python3 manage.py startapp challenges
 
-
+academind-pro 
+academind-pro $
 
 
 
