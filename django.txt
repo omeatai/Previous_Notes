@@ -7,7 +7,8 @@ CREATE DJANGO PROJECT
 django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
-
+RUN LOCAL SERVER
+$ python3 manage. py runserver
 
 
 
