@@ -179,7 +179,95 @@ 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
 #load
 
 
+FILE I/O
 
+from translate import Translator
+
+translator= Translator(to_lang="fr")
+try:
+    with open('./text.txt', mode='r') as my_file:
+        message = my_file.read()
+        translation = translator.translate(message)
+        print(translation)
+        with open('./translation.txt', mode='w') as t_file:
+            t_file.write(translation)
+except FileNotFoundError as err:
+    print('file does not exist')
+    raise err from err
+ 
+
+with open('message.txt','r') as f:
+    #count = 0
+    content = f.read(6)
+    print(content)
+    
+    more_content = f.read(12)
+    print(more_content)
+    # for word in f:
+    #     words = word.split(' ')
+    #     print(word)
+    #     count += len(words)    
+    # print(count)     
+
+with open('ans.txt','r') as f:
+    print(f.readlines())
+
+
+
+with open('ans.txt','w') as f:
+    f.write('Howdy\n')
+    f.write('What is that?')
+
+with open('ans.txt','a') as f:
+    f.write('Howdy\n')
+    f.write('What is that?\n')
+
+with open('person.txt') as my_file:
+    print(my_file.read())
+
+with open('person.txt', mode='r') as my_file:
+    print(my_file.read())
+
+with open('someone.txt', mode='w') as my_file:
+    message = my_file.write('Somebody has arrived!')
+    print(message)
+
+with open('someone.txt', mode='a') as my_file:
+    message = my_file.write(' Hello Everybody!')
+    print(message)
+
+with open('./app/someone.txt', mode='r') as my_file:
+    message = my_file.read()
+    print(message)
+
+try:
+    with open('someone.txt', mode='r') as my_file:
+        message = my_file.read()
+        print(message)
+except FileNotFoundError as err:
+    print('file does not exist')
+    raise err from err
+
+my_file = open('person.txt')
+print(my_file.read())
+my_file.close()    
+
+with open('person.txt') as my_file:
+    print(my_file.read())
+    my_file.seek(0)
+    print(my_file.read())
+    
+with open('person.txt') as my_file:
+    print(my_file.readline())
+    print(my_file.readline())
+    print(my_file.readline())
+
+with open('person.txt') as my_file:
+    my_file = open('person.txt')
+    print(my_file.readlines())
+
+
+ 
 
 
 
