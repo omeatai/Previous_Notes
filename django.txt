@@ -8,7 +8,7 @@ django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
 RUN LOCAL SERVER
-$ python3 manage. py runserver
+$ python3 manage.py runserver
 >>>>>
 Django version 3.1.5, using settings 'mypage.settings'
 Starting development server at http://127.0.0.1:8000/
