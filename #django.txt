@@ -19,19 +19,16 @@ $ django-admin startproject monthly_challenges
 $ django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
+CREATE PROJECT APPS
+$ python manage.py startapp challenges
+$ python3 manage.py startapp challenges
+
 RUN LOCAL SERVER
 $ python3 manage.py runserver
 >>>>>
 Django version 3.1.5, using settings 'mypage.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-
-CREATE PROJECT APPS
-$ python manage.py startapp challenges
-$ python3 manage.py startapp challenges
-
-academind-pro 
-academind-pro $
 
 
 
