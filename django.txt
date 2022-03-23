@@ -6,3 +6,8 @@ $ django-admin
 CREATE DJANGO PROJECT
 django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
+
+
+
+
+
