@@ -25,7 +25,7 @@ Django version 3.1.5, using settings 'mypage.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
-CREATE NEW APPS
+CREATE PROJECT APPS
 $ python manage.py startapp challenges
 $ python3 manage.py startapp challenges
 
