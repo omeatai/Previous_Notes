@@ -69,8 +69,27 @@ urlpatterns = [
 ]
 
 #DYNAMIC PATH SEGMENTS
+>>>APP.VIEWS.PY
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound
 
+def index(request):
+    return HttpResponse('welcome Home!')
 
+def contact(request):
+    return HttpResponse('Contact us page')
+
+def my_challenges(request, month):
+    challenges = None
+    if month == 'january':
+        challenges = 'This is January!'
+    elif month == 'february':
+        challenges = 'This is February!'
+    elif month == 'march':
+        challenges = 'This is March!'
+    else:
+        return HttpResponseNotFound('Not a supported Month!')    
+    return HttpResponse(challenges)   
 
 
 
