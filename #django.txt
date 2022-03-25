@@ -38,7 +38,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse('''Hi, Got your request!''')
 
-URL.PY
+URLS.PY
 from django.urls import path
 from . import views
 
