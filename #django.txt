@@ -36,7 +36,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('''Hi, Got your request!''')
+    return HttpResponse('welcome Home!')
+def contact(request):
+    return HttpResponse('Contact us page')
 
 app.URLS.PY
 from django.urls import path
