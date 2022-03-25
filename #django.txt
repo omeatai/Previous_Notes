@@ -68,6 +68,7 @@ urlpatterns = [
     path('challenges/', include('challenges.urls'))
 ]
 
+
 #DYNAMIC PATH SEGMENTS
 >>>APP.VIEWS.PY
 from django.shortcuts import render
@@ -91,10 +92,25 @@ def my_challenges(request, month):
         return HttpResponseNotFound('Not a supported Month!')    
     return HttpResponse(challenges)   
 
+>>>APP.URLS.PY
+from django.urls import path
+from . import views
 
+urlpatterns = [
+    path('', views.index, name='home'),
+    path('contact', views.contact, name='contact'),
+    path('<month>', views.my_challenges, name='my_challenges'),
+]
 
+>>>PROJECT.URLS.PY
+from django.contrib import admin
+from django.urls import include, path
+import challenges
 
-
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('challenges/', include('challenges.urls')),
+]
 
 
 
