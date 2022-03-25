@@ -1,36 +1,36 @@
-#INSTALL VENV
+#1.INSTALL VENV
 $ python3 -m venv venv
 $ source venv/bin/activate
 (venv) $ 
 
 
-#CREATE REQUIREMENTS
+#2.CREATE REQUIREMENTS
 $ pip freeze > requirements.txt
 $ cat requirements.txt
 numpy==1.9.2
 requests==2.7.0
 
 
-#INSTALL DJANGO
+#3.INSTALL DJANGO
 $ python -m pip install Django
 $ django-admin
 
 
-#VIEW DJANGO VERSION
+#4.VIEW DJANGO VERSION
 $ python -m django --version
 
 
-#CREATE DJANGO PROJECT
+#5.CREATE DJANGO PROJECT
 $ django-admin startproject monthly_challenges
 $ django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
 
-#CREATE PROJECT APPS
+#6.CREATE PROJECT APPS
 $ python manage.py startapp challenges
 
 
-#RUN LOCAL SERVER
+#7.RUN LOCAL SERVER
 $ python manage.py runserver
 >>>>>
 Django version 3.1.5, using settings 'mypage.settings'
@@ -38,7 +38,7 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
 
-#CREATE VIEWS AND URLS
+#8.CREATE VIEWS AND URLS
 >>>APP.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -69,7 +69,7 @@ urlpatterns = [
 ]
 
 
-#DYNAMIC PATH SEGMENTS
+#9.DYNAMIC PATH SEGMENTS
 >>>APP.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
