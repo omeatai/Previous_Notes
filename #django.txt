@@ -62,13 +62,33 @@ urlpatterns = [
 project.URLS.PY
 from django.contrib import admin
 from django.urls import include, path
-
 import challenges
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('challenges/', include('challenges.urls'))
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
