@@ -3,26 +3,32 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 (venv) $ 
 
+
 CREATE REQUIREMENTS
 $ pip freeze > requirements.txt
 $ cat requirements.txt
 numpy==1.9.2
 requests==2.7.0
 
+
 INSTALL DJANGO
 $ python -m pip install Django
 $ django-admin
 
+
 VIEW DJANGO VERSION
 $ python -m django --version
+
 
 CREATE DJANGO PROJECT
 $ django-admin startproject monthly_challenges
 $ django-admin startproject mypage
 ~/desktop/server/django django-admin startproject mypage
 
+
 CREATE PROJECT APPS
 $ python manage.py startapp challenges
+
 
 RUN LOCAL SERVER
 $ python manage.py runserver
@@ -31,22 +37,27 @@ Django version 3.1.5, using settings 'mypage.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
+
 app.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
     return HttpResponse('welcome Home!')
+
 def contact(request):
     return HttpResponse('Contact us page')
+
 
 app.URLS.PY
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('january', views.index, name='january'),
+    path('', views.index, name='home'),
+    path('contact', views.contact, name='contact'),
 ]
+
 
 project.URLS.PY
 from django.contrib import admin
