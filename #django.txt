@@ -38,7 +38,8 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
 
-#APP.VIEWS.PY
+#CREATE VIEWS AND URLS
+>>>APP.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -48,8 +49,7 @@ def index(request):
 def contact(request):
     return HttpResponse('Contact us page')
 
-
-#APP.URLS.PY
+>>>APP.URLS.PY
 from django.urls import path
 from . import views
 
@@ -58,8 +58,7 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
 ]
 
-
-#PROJECT.URLS.PY
+>>>PROJECT.URLS.PY
 from django.contrib import admin
 from django.urls import include, path
 import challenges
@@ -69,6 +68,7 @@ urlpatterns = [
     path('challenges/', include('challenges.urls'))
 ]
 
+#DYNAMIC PATH SEGMENTS
 
 
 
