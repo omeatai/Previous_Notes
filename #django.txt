@@ -113,10 +113,29 @@ urlpatterns = [
 ]
 
 
+#10.PATH CONVERTERS
+>>>APP.VIEWS.PY
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound
 
+def index(request):
+    return HttpResponse('welcome Home!')
 
+def int_contact(request, contact):
+    return HttpResponse(f'Contact number {contact}.')
 
+def str_contact(request, contact):
+    return HttpResponse(f'This is the contact of {contact}.')
 
+>>>APP.URLS.PY
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='home'),
+    path('<int:contact>',views.int_contact, name='int_contact'),
+    path('<str:contact>', views.str_contact, name='str_contact'),
+]
 
 
 
