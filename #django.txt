@@ -608,7 +608,45 @@ def my_challenges(request, month):
 </html>
 
 
-#21.Using 
+#21.Using Django Template Filters
+>>>APP.VIEWS.PY
+def my_challenges_num(request, month):
+    try:
+        months = list(tasks.keys())
+        selected_month = months[month - 1]
+        redirect = reverse("my-challenges", args=[selected_month])
+        return HttpResponseRedirect(redirect)
+    except:
+        return HttpResponseNotFound('<h1>Invalid value for Month</h1>')
+
+def my_challenges(request, month):
+    try:
+        challenge = tasks[month]
+        return render(request, "challenges/challenge.html", {
+            "challenge": challenge,
+            "month": month
+            })
+    except:     
+        return HttpResponseNotFound('<h1>Not a supported value for Month!</h1>')   
+    
+>>>APP.TEMPLATES.CHALLENGES.CHALLENGE.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{month | title}} Challenge</title>
+</head>
+<body>
+    <h1>{{month | title}} challenge</h1>
+    <h2>{{challenge | title}}</h2>
+</body>
+</html>
+
+
+
+
 
 
 
