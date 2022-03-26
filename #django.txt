@@ -329,7 +329,7 @@ urlpatterns = [
 ]
 
 
-#15.Using Dynamic HTML 
+#15.Using Static HTML with looping
 >>>APP.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
@@ -388,7 +388,7 @@ urlpatterns = [
 ]
 
 
-
+#16.Using 
 
 
 
