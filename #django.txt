@@ -488,7 +488,55 @@ INSTALLED_APPS = [
 ]
 
 
-#18.Using Application definition
+#18.Using Render Function
+>>>APP.VIEWS.PY
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
+
+tasks = {
+    'january': 'Take a walk in january',
+    'february': 'Sing a song in february',
+    'march': 'Play a sport in march',
+    'april': 'Call the tailor in april',
+    'may': 'Pray for mary in may',
+    'june': 'Go for a marathon in june',
+    'july': 'Play the drums in july',
+    'august': 'Got to school in august',
+    'september': 'Watch a movie in september',
+    'october': 'Got to the cinema in october',
+    'november': 'Study for exam in november',
+    'december': 'Paint the house in december'
+}
+
+def index(request):
+    list_items = ""
+    months = list(tasks.keys())
+    for month in months:
+        capitalized_month = month.capitalize()
+        path = reverse("my-challenges", args=[month])
+        list_items += f"<li><a href='{path}'>{capitalized_month}</a></li>" 
+        
+    response_data = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_data)
+
+def my_challenges_num(request, month):
+    try:
+        months = list(tasks.keys())
+        selected_month = months[month - 1]
+        redirect = reverse("my-challenges", args=[selected_month])
+        return HttpResponseRedirect(redirect)
+    except:
+        return HttpResponseNotFound('<h1>Invalid value for Month</h1>')
+
+def my_challenges(request, month):
+    try:
+        challenges = tasks[month]
+        return render(request, "challenges/challenge.html")
+    except:     
+        return HttpResponseNotFound('<h1>Not a supported value for Month!</h1>')   
+    
+
 
 
 
