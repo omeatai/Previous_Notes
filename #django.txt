@@ -388,9 +388,89 @@ urlpatterns = [
 ]
 
 
-#16.Using 
+#16.Using render_to_string
+>>>APP.VIEWS.PY
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
+from django.template.loader import render_to_string
 
+tasks = {
+    'january': 'Take a walk in january',
+    'february': 'Sing a song in february',
+    'march': 'Play a sport in march',
+    'april': 'Call the tailor in april',
+    'may': 'Pray for mary in may',
+    'june': 'Go for a marathon in june',
+    'july': 'Play the drums in july',
+    'august': 'Got to school in august',
+    'september': 'Watch a movie in september',
+    'october': 'Got to the cinema in october',
+    'november': 'Study for exam in november',
+    'december': 'Paint the house in december'
+}
 
+def index(request):
+    list_items = ""
+    months = list(tasks.keys())
+    for month in months:
+        capitalized_month = month.capitalize()
+        path = reverse("my-challenges", args=[month])
+        list_items += f"<li><a href='{path}'>{capitalized_month}</a></li>" 
+        
+    response_data = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_data)
+
+def my_challenges_num(request, month):
+    try:
+        months = list(tasks.keys())
+        selected_month = months[month - 1]
+        redirect = reverse("my-challenges", args=[selected_month])
+        return HttpResponseRedirect(redirect)
+    except:
+        return HttpResponseNotFound('<h1>Invalid value for Month</h1>')
+
+def my_challenges(request, month):
+    try:
+        challenges = tasks[month]
+        response_data = render_to_string("challenges/challenge.html")
+        return HttpResponse(response_data)   
+    except:     
+        return HttpResponseNotFound('<h1>Not a supported value for Month!</h1>')   
+    
+>>>APP.TEMPLATES.CHALLENGES.CHALLENGE.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Challenges</title>
+</head>
+<body>
+    <h1>This month's challenge</h1>
+    <h2>Go for a walk everyday!</h2>
+</body>
+</html>
+
+>>>PROJECT.SETTINGS.PY
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+                BASE_DIR / "challenges" / "templates"
+            ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
 
