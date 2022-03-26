@@ -473,7 +473,22 @@ TEMPLATES = [
 ]
 
 
+#17.Using Application definition
+>>>PROJECT.SETTINGS.PY
+# Application definition
 
+INSTALLED_APPS = [
+    'challenges',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+
+
+#18.Using Application definition
 
 
 
