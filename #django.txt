@@ -645,7 +645,7 @@ def my_challenges(request, month):
 </html>
 
 
-#22.Using Template 'for' Tags
+#22.Using Template 'for' and 'url' Tags
 >>>APP.VIEWS.PY
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
@@ -703,7 +703,7 @@ def my_challenges(request, month):
 <body>
     <ul>
         {% for month in months %}
-            <li><a href="">{{month|upper}}</a></li>
+            <li><a href="{% url 'my-challenges' month %}">{{month|upper}}</a></li>
         {% endfor %}
     </ul>
 </body>
