@@ -841,12 +841,38 @@ TEMPLATES = [
 {% endblock %}
 
 
-#25.Using Template 
+#25.Using Template Includes function
+>>>APP.URLS.PY
+from django.urls import path
+from . import views
 
+urlpatterns = [
+    path('', views.index, name='home'),
+    path('<int:month>', views.my_challenges_num, name='my-challenges-num'),
+    path('<str:month>', views.my_challenges, name='my-challenges'),
+]
 
+>>>APP.TEMPLATES.CHALLENGES.INCLUDES.HEADER.HTML
+<header>
+    <nav>
+        <a href="{% url 'home' %}">All Challenges</a>
+    </nav>
+</header>    
 
+>>>APP.TEMPLATES.CHALLENGES.CHALLENGE.HTML
+{% extends 'base.html' %}
 
+{% block title %}{{month|title}} Challenge{% endblock %}
 
+{% block content %}
+    {% include 'challenges/includes/header.html'%}
+    <h1>{{month|title}} challenge</h1>
+    {% if challenge is not None %}
+        <h2>{{challenge}}</h2>
+    {% else %}
+        <h2>There is no challenge for this month yet.</h2>    
+    {% endif %}    
+{% endblock %}
 
 
 
