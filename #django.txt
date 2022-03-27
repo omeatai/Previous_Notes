@@ -826,5 +826,31 @@ TEMPLATES = [
 {% endblock %}
 
 
+>>>APP.TEMPLATES.CHALLENGES.CHALLENGE.HTML
+{% extends 'base.html' %}
+
+{% block title %}{{month|title}} Challenge{% endblock %}
+
+{% block content %}
+    <h1>{{month|title}} challenge</h1>
+    {% if challenge is not None %}
+        <h2>{{challenge}}</h2>
+    {% else %}
+        <h2>There is no challenge for this month yet.</h2>    
+    {% endif %}    
+{% endblock %}
+
+
+#25.Using Template 
+
+
+
+
+
+
+
+
+
+
 
 
