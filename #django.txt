@@ -608,7 +608,7 @@ def my_challenges(request, month):
 </html>
 
 
-#21.Using Django Template Filters
+#21.Using Template Filters
 >>>APP.VIEWS.PY
 def my_challenges_num(request, month):
     try:
@@ -645,9 +645,69 @@ def my_challenges(request, month):
 </html>
 
 
-#22.Using
+#22.Using Template 'for' Tags
+>>>APP.VIEWS.PY
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
+tasks = {
+    'january': 'Take a walk in january',
+    'february': 'Sing a song in february',
+    'march': 'Play a sport in march',
+    'april': 'Call the tailor in april',
+    'may': 'Pray for mary in may',
+    'june': 'Go for a marathon in june',
+    'july': 'Play the drums in july',
+    'august': 'Got to school in august',
+    'september': 'Watch a movie in september',
+    'october': 'Got to the cinema in october',
+    'november': 'Study for exam in november',
+    'december': 'Paint the house in december'
+}
 
+def index(request):
+    months = list(tasks.keys())
+    return render(request, 'challenges/index.html', {
+        "months": months
+    })
+
+def my_challenges_num(request, month):
+    try:
+        months = list(tasks.keys())
+        selected_month = months[month - 1]
+        redirect = reverse("my-challenges", args=[selected_month])
+        return HttpResponseRedirect(redirect)
+    except:
+        return HttpResponseNotFound('<h1>Invalid value for Month</h1>')
+
+def my_challenges(request, month):
+    try:
+        challenge = tasks[month]
+        return render(request, "challenges/challenge.html", {
+            "challenge": challenge,
+            "month": month
+            })
+    except:     
+        return HttpResponseNotFound('<h1>Not a supported value for Month!</h1>')   
+  
+>>>APP.TEMPLATES.CHALLENGES.INDEX.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <ul>
+        {% for month in months %}
+            <li><a href="">{{month|upper}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
 
 
 
