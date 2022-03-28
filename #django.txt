@@ -945,4 +945,16 @@ def my_challenges(request, month):
 
 
 
+Create Migrations
+$python manage.py migrate 
+
+Create SuperUser
+$python manage.py createsuperuser
+Username: 
+Email address:
+Password: 
+
+
+
+
 
