@@ -962,6 +962,7 @@ lafa-fblc-lski-ciqk-kdnq
 
 
 #Set Models.py file
+>>>Models.py
 from django.db import models
 
 class Members(models.Model):
@@ -971,7 +972,7 @@ class Members(models.Model):
     password = models.CharField(max_length=50)
     age = models.IntegerField()
 
-
+$ python manage.py makemigrations
 
 
 
