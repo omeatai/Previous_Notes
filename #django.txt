@@ -969,7 +969,12 @@ class Members(models.Model):
     lastname = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=50)
-    age = models.IntegerField(max_length=3)
+    age = models.IntegerField()
+
+
+
+
+
 
 
 
