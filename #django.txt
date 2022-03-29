@@ -954,6 +954,10 @@ Username:
 Email address:
 Password: 
 
+pip freeze or pip list
+
+
+
 
 
 
