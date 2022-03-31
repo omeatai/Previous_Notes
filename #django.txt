@@ -999,14 +999,13 @@ Password:
 
 pip freeze or pip list
 
-strip
-lafa-fblc-lski-ciqk-kdnq
-
 $ python manage.py makemigrations
 
 $ python manage.py migrate
 
 $ python manage.py sqlmigrate weblog 0001
+
+$ python manage.py shell
 
 
 from blog.models import Post
@@ -1016,10 +1015,15 @@ User.objects.all()
 User.objects.first()
 User.objects.filter(username=‘Alex’)
 User.objects.filter(username=‘Alex’).first()
+user = User.objects.filter(username=‘Alex’).first()
+user = User.objects.get(id=1)
+user.id
+user.pk
 
 
 
-
+strip
+lafa-fblc-lski-ciqk-kdnq
 
 
 
