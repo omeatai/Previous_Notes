@@ -938,29 +938,6 @@ def my_challenges(request, month):
 {% endblock %}
 
 
-
-
-
-
-
-
-
-Create Migrations
-$python manage.py migrate 
-
-Create SuperUser
-$python manage.py createsuperuser
-Username: 
-Email address:
-Password: 
-
-pip freeze or pip list
-
-strip
-lafa-fblc-lski-ciqk-kdnq
-
-
-
 #Set Models.py file
 >>>Models.py
 from django.db import models
@@ -971,13 +948,6 @@ class Members(models.Model):
     email = models.EmailField(max_length=254)
     password = models.CharField(max_length=50)
     age = models.IntegerField()
-
-
-$ python manage.py makemigrations
-
-$ python manage.py migrate
-
-
 
 
 Pull Data From The Database
@@ -1013,3 +983,37 @@ class Member(models.Model):
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
+
+
+
+python decouple module
+
+Create Migrations
+$python manage.py migrate 
+
+Create SuperUser
+$python manage.py createsuperuser
+Username: 
+Email address:
+Password: 
+
+pip freeze or pip list
+
+strip
+lafa-fblc-lski-ciqk-kdnq
+
+$ python manage.py makemigrations
+
+$ python manage.py migrate
+
+
+
+
+
+
+
+
+
+
+
+
