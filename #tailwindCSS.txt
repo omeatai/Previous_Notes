@@ -1,6 +1,6 @@
 #1. TailwindCSS CDN
 https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css
-
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
 #2. TailwindCSS primary colors
 black,white
