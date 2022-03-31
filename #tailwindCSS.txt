@@ -23,7 +23,11 @@ grey, red, orange, yellow, green, teal, indigo, blue, purple, pink
     <div class="bg-orange-800 w-6/12">Text</div>
 </body>
 
-#4 
+#4 Margin
+<body>
+    <div class="bg-blue-800 w-32 h-32 mb-4">Text</div>
+    <div class="bg-blue-500 w-32 h-32 mt-4">Text</div>
+</body>
 
 
 
