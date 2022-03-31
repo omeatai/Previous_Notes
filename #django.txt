@@ -1019,7 +1019,7 @@ user = User.objects.filter(username=‘Alex’).first()
 user = User.objects.get(id=1)
 user.id
 user.pk
-
+user.post_set.all()
 
 
 strip
