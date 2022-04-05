@@ -1,72 +1,3 @@
-#1.INSTALL VENV
-$ python3 -m venv venv
-$ source venv/bin/activate
-(venv) $ 
-
-
-#2.CREATE REQUIREMENTS
-$ pip freeze > requirements.txt
-$ cat requirements.txt
-numpy==1.9.2
-requests==2.7.0
-
-
-#3.INSTALL DJANGO
-$ python -m pip install Django
-$ django-admin
-
-
-#4.VIEW DJANGO VERSION
-$ python -m django --version
-
-
-#5.CREATE DJANGO PROJECT
-$ django-admin startproject monthly_challenges
-$ django-admin startproject mypage
-~/desktop/server/django django-admin startproject mypage
-
-
-#6.CREATE PROJECT APPS
-$ python manage.py startapp challenges
-
-
-#7.RUN LOCAL SERVER
-$ python manage.py runserver
->>>>>
-Django version 3.1.5, using settings 'mypage.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
-
-
-#8.CREATE VIEWS AND URLS
->>>APP.VIEWS.PY
-from django.shortcuts import render
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse('welcome Home!')
-
-def contact(request):
-    return HttpResponse('Contact us page')
-
->>>APP.URLS.PY
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('', views.index, name='home'),
-    path('contact', views.contact, name='contact'),
-]
-
->>>PROJECT.URLS.PY
-from django.contrib import admin
-from django.urls import include, path
-import challenges
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('challenges/', include('challenges.urls'))
-]
 
 
 #9.DYNAMIC PATH SEGMENTS
@@ -102,15 +33,6 @@ urlpatterns = [
     path('<month>', views.my_challenges, name='my-challenges'),
 ]
 
->>>PROJECT.URLS.PY
-from django.contrib import admin
-from django.urls import include, path
-import challenges
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('challenges/', include('challenges.urls')),
-]
 
 
 #10.PATH CONVERTERS
@@ -985,46 +907,54 @@ class Member(models.Model):
         return f"{self.firstname} {self.lastname}"
 
 
-
-python decouple module
-
-Create Migrations
-$python manage.py migrate 
-
-Create SuperUser
-$python manage.py createsuperuser
-Username: 
-Email address:
-Password: 
-
-pip freeze or pip list
-
-$ python manage.py makemigrations
-
-$ python manage.py migrate
-
-$ python manage.py sqlmigrate weblog 0001
-
-$ python manage.py shell
-
-
-from blog.models import Post
-from django.contrib.auth.models import User
-
-User.objects.all()
-User.objects.first()
-User.objects.filter(username=‘Alex’)
-User.objects.filter(username=‘Alex’).first()
-user = User.objects.filter(username=‘Alex’).first()
-user = User.objects.get(id=1)
-user.id
-user.pk
-user.post_set.all()
-user.post_set.create(title="", content="")
-
+#####################################################################################
+#####################################################################################
+#####################################################################################
 
 strip
 lafa-fblc-lski-ciqk-kdnq
+
+
+*Communication
+username - string
+password - string
+date_joined - datetime
+
+*Authentication
+username - string
+password - string
+date_joined - datetime
+
+*Authorization
+- groups - string
+- is_active - bool
+- is_superuser - bool
+- is_staff - bool
+
+*Extending Django user Models
+Proxy Model
+One to One link ==> OneToOneField
+AbstractUser
+AbstractBaseUser
+
+
+https://docs.djangoproject.com/en/4.0/topics/class-based-views/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
