@@ -77,7 +77,7 @@ Pretty Pretty YouTube Channel -
 https://www.youtube.com/c/prettyprintedtutorials
 
 
-Automatic primary key fields
+# Automatic primary key fields
 By default, Django gives each model an auto-incrementing primary key with the type specified per app in AppConfig.default_auto_field or globally in the DEFAULT_AUTO_FIELD setting. 
 For example:
 
