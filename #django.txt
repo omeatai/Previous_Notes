@@ -1,3 +1,97 @@
+#Database Engines
+django.db.backends.postgresql
+django.db.backends.mysql
+django.db.backends.sqlite3
+django.db.backends.oracle
+
+#Example configuration in settings.py
+DATABASES = {
+  'default': {
+     'ENGINE': 'django.db.backends.mysql',
+     'NAME': 'databasename',
+     'USER': 'username',
+     'PASSWORD': 'password',
+     'HOST': '127.0.0.1',
+     'PORT': '5432',
+}
+
+#Model Fields
+BooleanField
+CharField
+DateField
+DateTimeField
+DecimalField
+EmailField
+FileField
+FloatField
+ImageField
+IntegerField
+TextField
+
+#Relationship Fields
+ForeignKey
+ManyToManyField
+
+#Example Model
+from django.db import models
+from django.utils import timezone
+
+class Make (models.Model):
+  name = models.CharField (max_length=15)
+  factory_address = models. TextField()
+  email = models. EmailField()
+  def _str_(self):
+     return self.name
+
+class Car(models.Model):
+  name = models.CharField (max_length=20)
+  active = BooleanField()
+  date_added = DateTimeField (default=timezone.now)
+  price = FloatField()
+  make = models.ForeignKey (Make)
+  def _str_(self):
+     return self.name
+
+
+#Create Objects
+from .models import Make, Car
+toyota = Make (name='Toyota', factory_address='Somewhere in Japan...',
+      email='toyota@toyota.com')
+toyota.save()
+camry = Car(name='Camry', active=True, price=29999.99, make=toyota)
+camry.save()
+
+#Example Queries
+Car.objects.get(pk=1) #get car with primary key = 1
+Make.objects.all()
+Car.objects.filter(name='Camry')
+Make.objects.all() [5:10] #offset 5, limit 10
+Car.objects.order_by('name')
+Make.objects.filter(name_startswith='Toy')
+Car.objects.filter(make_name='Toyota') #relationship query
+
+#Useful Links
+Django Website - https://www.djangoproject.com
+Pretty Printed Website - http://prettyprinted.com
+Pretty Pretty YouTube Channel -
+https://www.youtube.com/c/prettyprintedtutorials
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #9.DYNAMIC PATH SEGMENTS
