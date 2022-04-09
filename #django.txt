@@ -92,6 +92,27 @@ pip uninstall -r requirements.txt
 #If we want to remove all at once then
 pip uninstall -r requirements.txt -y
 
+#PIPENV
+pip install pipenv
+pipenv --python 3.10.3
+
+pipenv shell
+source $(pipenv --venv)/bin/activate
+
+exit
+
+#View location of the virtualenv:
+pipenv --venv
+
+pipenv --rm
+rm -rf /Users/ifeanyiomeata/.local/share/virtualenvs/docker_drf-yNZHhWWe
+
+
+
+
+
+
+
 
 
 
