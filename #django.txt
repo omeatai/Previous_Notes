@@ -198,10 +198,12 @@ pip install djangorestframework
 from rest_framework import serializers
 from .models import User
 
-class userSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'firstname', 'lastname', 'gender', 'age', 'password')
+        
+class UserSerializer(serializers.ModelSerializer):
 
 ###########################
 # rest > views.py:
@@ -212,12 +214,57 @@ from .models import User
 from .serializers import UserSerializer
 
 
-class UserView(viewsets.Modelviewset):
+class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
 ###########################
 # rest > urls.py:
+
+from django.urls import include, path
+from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('rest', views.UserView)
+
+urlpatterns = [
+    path('', include(router.urls))
+]
+
+
+###########################
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest.apps.RestConfig',
+    'rest_framework',
+]
+
+###########################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
