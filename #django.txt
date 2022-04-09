@@ -217,7 +217,7 @@ class UserView(viewsets.Modelviewset):
     serializer_class = UserSerializer
 
 ###########################
-# rest > views.py:
+# rest > urls.py:
 
 
 
