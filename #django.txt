@@ -190,7 +190,7 @@ admin.site.register(User)
 pip install djangorestframework
 
 # SERIALIZERS:
-rest > serializers.py:
+# rest > serializers.py:
 
 from rest_framework import serializers
 from .models import User
@@ -201,8 +201,17 @@ class userSerializer(serializers.ModelSerializer):
         fields = ('id', 'firstname', 'lastname', 'gender', 'age', 'password')
 
 
+# rest > views.py:
+
+from django.shortcuts import render
+from rest_framework import viewsets
+from .models import User
+from .serializers import UserSerializer
 
 
+class UserView(viewsets.Modelviewset):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 
