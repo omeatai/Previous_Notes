@@ -84,13 +84,21 @@ For example:
 id = models.BigAutoField(primary_key=True)
 
 
+# capture requirements to install
 pip freeze > requirements.txt
 
-#Now to remove one by one
+# install requirements from requirements.txt
+pip install -r requirements.txt
+
+# Now to remove one by one
 pip uninstall -r requirements.txt
 
-#If we want to remove all at once then
+# If we want to remove all at once then
 pip uninstall -r requirements.txt -y
+
+
+
+
 
 #PIPENV
 pip install pipenv
@@ -107,11 +115,12 @@ pipenv --venv
 pipenv --rm
 rm -rf /Users/ifeanyiomeata/.local/share/virtualenvs/docker_drf-yNZHhWWe
 
+from blog.models import Post
+from django.contrib.auth.models import User
 
+AUTH_USER_MODEL = 'hotel.user'
 
-
-
-
+{% if user.is_authenticated %}{% endif %}
 
 
 
