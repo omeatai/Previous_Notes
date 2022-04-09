@@ -84,7 +84,13 @@ For example:
 id = models.BigAutoField(primary_key=True)
 
 
+pip freeze > requirements.txt
 
+#Now to remove one by one
+pip uninstall -r requirements.txt
+
+#If we want to remove all at once then
+pip uninstall -r requirements.txt -y
 
 
 
