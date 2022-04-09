@@ -125,10 +125,7 @@ pipenv --venv
 pipenv --rm
 rm -rf /Users/ifeanyiomeata/.local/share/virtualenvs/docker_drf-yNZHhWWe
 
-from blog.models import Post
-from django.contrib.auth.models import User
 
-AUTH_USER_MODEL = 'hotel.user'
 
 {% if user.is_authenticated %}{% endif %}
 
@@ -155,6 +152,10 @@ class User(AbstractUser):
     def __str__(self):
         return f'User: {self.username.title()}'
 
+from blog.models import Post
+from django.contrib.auth.models import User
+
+AUTH_USER_MODEL = 'hotel.user'
 
 INSTALLED_APPS = [
     'hotel.apps.HotelConfig',
