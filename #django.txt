@@ -156,6 +156,22 @@ class User(AbstractUser):
         return f'User: {self.username.title()}'
 
 
+INSTALLED_APPS = [
+    'hotel.apps.HotelConfig',
+    'aa.apps.AaConfig',
+    'booking.apps.BookingConfig',
+    'payment.apps.PaymentConfig',
+    'logs.apps.LogsConfig',
+]
+
+
+
+
+
+
+
+
+
 
 
 
