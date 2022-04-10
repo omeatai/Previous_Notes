@@ -289,7 +289,192 @@ Shortcuts
 'gm' : 'graph_models',
 'rs' : 'runscript'
 
+######################################################
+######################################################
+Django Introduction for Beginners
+######################################################
+######################################################
 
+from django.contrib import admin
+from .models import User
+
+admin.site.register(User)
+
+###########################
+
+from django.shortcuts import render
+from .models import Comment
+
+def home(request):
+    comments = Comment.objects.order_by('-date_added')
+    return render(request, 'bookclub/home.html', {
+        "comments" : comments,
+    })
+
+###########################
+
+<div class="col-md-3">
+    <div class="h-100 p-5 text-white bg-dark rounded-3">
+    <h2>{{comment.name}}</h2>
+    <p>Comment on:<br> {{comment.date_added | date:"F d, Y"}}.</p>
+    </div>
+</div>
+
+###########################
+
+forms.py:
+
+from django import forms
+
+class CommentForm(forms.Form):
+    name = forms.CharField(max_length=200, 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}))
+    title = forms.CharField(max_length=200, 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title'}))
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+
+###########################
+
+views.py:
+
+def comment(request):
+    form = CommentForm()
+    return render(request, 'bookclub/comment.html', {
+        "form" : form,
+    })
+
+###########################
+
+urls.py:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('comment/', views.comment, name='comment'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+]
+
+###########################
+views.py:
+
+from django.shortcuts import render, redirect
+from .models import Comment
+from .forms import CommentForm
+
+def home(request):
+    comments = Comment.objects.order_by('-date_added')
+    return render(request, 'bookclub/home.html', {
+        "comments" : comments,
+    })
+
+def comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        data = request.POST
+        
+        if form.is_valid():
+            instance = Comment(name=data['name'],title=data['title'],comment=data['comment'])
+            instance.save()
+            return redirect('home')
+    else:
+        form = CommentForm()
+        return render(request, 'bookclub/comment.html', {
+            "form" : form,
+        })
+
+###########################
+home.html:
+
+{% block comment %}
+{% for comment in comments %}
+<div class="row align-items-md-stretch">
+    <div class="col-md-3">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+        <h2>{{comment.name}}</h2>
+        <p>Comment on:<br> {{comment.date_added | date:"F d, Y"}}.</p>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>{{comment.title}}</h2>
+        <p>{{comment.comment}}</p>
+        </div>
+    </div>
+</div>
+<div class="row align-items-md-stretch">
+    <div class="col-md-12">
+        &nbsp;
+    </div>    
+</div> 
+{% endfor %}   
+{% endblock comment %}
+
+###########################
+comment.py:
+
+{% extends 'bookclub/base.html' %}
+
+{% block title %}BookClub.io - Comment{% endblock title %}
+
+{% block content %}
+<h1>Leave a Comment:</h1>
+<form method="POST" action="{% url 'comment' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        {% comment %} <input type="text" class="form-control" id="name"> {% endcomment %}
+        {{ form.name }}
+    </div>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        {{ form.title }}
+    </div>
+    <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        {{ form.comment }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<h1>&nbsp;</h1>
+{% endblock content %}
+
+###########################
+forms.py:
+
+from django import forms
+
+class CommentForm(forms.Form):
+    name = forms.CharField(max_length=200,
+        widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Full Name...', 'style': 'max-width: 600px', 'id': 'name'}))
+    title = forms.CharField(max_length=200, 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title...', 'style': 'max-width: 600px', 'id': 'title'}))
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your comments here...', 'id': 'comment', 'style': 'max-width: 600px'}))
+
+###########################
+models.py:
+
+from django.db import models
+from django.utils import timezone
+
+class Comment(models.Model):
+    name = models.CharField(max_length=200, default=None)
+    title = models.CharField(max_length=200, default=None)
+    comment = models.TextField(default=None)
+    date_added = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return f'<Name: {self.name}, ID: {self.id}>'
+
+
+######################################################
+######################################################
+Django Authentication Basics
+######################################################
+######################################################
 
 
 
