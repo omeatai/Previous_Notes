@@ -78,10 +78,10 @@ with open("index.html") as fp:
 for link in soup.find_all('a'):
     print(link.get('href'))
 
- 
+
 python3 -m venv venv
 source venv/bin/activate
-deactivate 
+deactivate
 python3 -m unittest
 
 pwd
